@@ -1,6 +1,8 @@
 # Processor Service SDK
 
-A Go SDK for interacting with the processor-service microservice. This SDK provides a type-safe client for events, scripts, and script executions (list, get, create, update, delete where applicable).
+A Go SDK for interacting with the processor-service microservice. This SDK
+provides a type-safe client for events, scripts, and script executions (list,
+get, create, update, delete where applicable).
 
 ## Installation
 
@@ -10,9 +12,11 @@ go get github.com/kerimovok/processor-service-sdk-go
 
 ## Features
 
-- **Type-safe**: Full type definitions for list/get/create/update responses (events, scripts, script executions)
+- **Type-safe**: Full type definitions for list/get/create/update responses
+  (events, scripts, script executions)
 - **Error handling**: `APIError` and `IsAPIError()` for API-level errors
-- **Pagination**: List endpoints support raw query string forwarding (page, per_page, filters)
+- **Pagination**: List endpoints support raw query string forwarding (page,
+  per_page, filters)
 
 ## Quick Start
 
@@ -29,7 +33,7 @@ import (
 
 func main() {
     client, err := processorsdk.NewClient(processorsdk.Config{
-        BaseURL: "http://localhost:3004",
+        BaseURL: "http://localhost:3003",
         Timeout: 10 * time.Second,
     })
     if err != nil {
@@ -58,7 +62,8 @@ func main() {
 
 ### Events
 
-- **ListEvents(ctx, queryString)** – Paginated list (query string forwarded as-is)
+- **ListEvents(ctx, queryString)** – Paginated list (query string forwarded
+  as-is)
 - **GetEvent(ctx, id)** – Get an event by ID
 - **UpdateEvent(ctx, id, payload)** – Update event payload
 - **DeleteEvent(ctx, id)** – Delete an event
@@ -70,7 +75,8 @@ func main() {
 - **CreateScript(ctx, body)** – Create a script
 - **UpdateScript(ctx, id, body)** – Update a script
 - **DeleteScript(ctx, id)** – Delete a script
-- **ListScriptExecutionsByScriptID(ctx, scriptID, queryString)** – List executions for a script
+- **ListScriptExecutionsByScriptID(ctx, scriptID, queryString)** – List
+  executions for a script
 
 ### Script Executions
 
@@ -79,7 +85,7 @@ func main() {
 
 ## Configuration
 
-- **BaseURL**: Processor service base URL (e.g. `http://localhost:3004`)
+- **BaseURL**: Processor service base URL (e.g. `http://localhost:3003`)
 - **Timeout**: Request timeout (optional, default 10s)
 
 ## Error Handling

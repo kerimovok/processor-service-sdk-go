@@ -20,7 +20,7 @@ const (
 
 // Config holds configuration for the processor service client
 type Config struct {
-	BaseURL string        // Processor service base URL (e.g. "http://localhost:3004")
+	BaseURL string        // Processor service base URL (e.g. "http://localhost:3003")
 	Timeout time.Duration // Request timeout (default 10 seconds)
 }
 
@@ -155,10 +155,10 @@ type EventItem struct {
 
 // ListEventsResponse is the paginated response from listing events
 type ListEventsResponse struct {
-	Success    bool         `json:"success"`
-	Message    string       `json:"message"`
-	Status     int          `json:"status"`
-	Data       []EventItem  `json:"data"`
+	Success    bool        `json:"success"`
+	Message    string      `json:"message"`
+	Status     int         `json:"status"`
+	Data       []EventItem `json:"data"`
 	Pagination *Pagination `json:"pagination,omitempty"`
 }
 
@@ -237,10 +237,10 @@ type ScriptItem struct {
 
 // ListScriptsResponse is the paginated response from listing scripts
 type ListScriptsResponse struct {
-	Success    bool          `json:"success"`
-	Message    string        `json:"message"`
-	Status     int           `json:"status"`
-	Data       []ScriptItem  `json:"data"`
+	Success    bool         `json:"success"`
+	Message    string       `json:"message"`
+	Status     int          `json:"status"`
+	Data       []ScriptItem `json:"data"`
 	Pagination *Pagination  `json:"pagination,omitempty"`
 }
 
@@ -368,19 +368,19 @@ type ScriptExecutionItem struct {
 
 // ListScriptExecutionsResponse is the paginated response from listing script executions
 type ListScriptExecutionsResponse struct {
-	Success    bool                   `json:"success"`
-	Message    string                 `json:"message"`
-	Status     int                    `json:"status"`
-	Data       []ScriptExecutionItem  `json:"data"`
-	Pagination *Pagination            `json:"pagination,omitempty"`
+	Success    bool                  `json:"success"`
+	Message    string                `json:"message"`
+	Status     int                   `json:"status"`
+	Data       []ScriptExecutionItem `json:"data"`
+	Pagination *Pagination           `json:"pagination,omitempty"`
 }
 
 // GetScriptExecutionResponse is the response from getting a script execution
 type GetScriptExecutionResponse struct {
-	Success bool                 `json:"success"`
+	Success bool                `json:"success"`
 	Message string              `json:"message"`
 	Status  int                 `json:"status"`
-	Data    ScriptExecutionItem  `json:"data"`
+	Data    ScriptExecutionItem `json:"data"`
 }
 
 // ListScriptExecutions lists script executions by forwarding the raw query string
