@@ -170,6 +170,25 @@ type GetEventResponse struct {
 	Data    EventItem `json:"data"`
 }
 
+// CreateEventRequest is the body for POST /api/v1/events (same shape as queue event task)
+type CreateEventRequest struct {
+	Service string                 `json:"service"`
+	Type    string                 `json:"type"`
+	Payload map[string]interface{} `json:"payload"`
+}
+
+// CreateEvent creates an event via HTTP (POST /api/v1/events). Lua scripts are executed asynchronously.
+func (c *Client) CreateEvent(ctx context.Context, body CreateEventRequest) (*GetEventResponse, error) {
+	raw, _ := json.Marshal(body)
+	path := c.baseURL + apiPathPrefix + "/events"
+	var result GetEventResponse
+	err := c.do(ctx, http.MethodPost, path, raw, []int{http.StatusCreated}, &result, "failed to create event")
+	if err != nil {
+		return nil, err
+	}
+	return &result, nil
+}
+
 // ListEvents lists events by forwarding the raw query string to processor-service
 func (c *Client) ListEvents(ctx context.Context, queryString string) (*ListEventsResponse, error) {
 	path := c.baseURL + apiPathPrefix + "/events"
